@@ -16,6 +16,7 @@ const Home: NextPage = () => {
 
       <Heading>Shogos</Heading>
       <Button
+        mt="4"
         onClick={() =>
           router.push({
             pathname: `/game/${Math.round(Math.random() * 1000000)}`,

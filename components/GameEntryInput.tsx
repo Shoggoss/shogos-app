@@ -28,7 +28,7 @@ export const GameEntryInput = forwardRef<
       <HStack>
         <Input
           ref={inputRef}
-          placeholder="プレイヤー名"
+          placeholder="エントリーして下さい"
           disabled={disabled}
           required
         />

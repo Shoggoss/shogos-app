@@ -8,6 +8,9 @@ import {
   HStack,
   Icon,
   IconButton,
+  Input,
+  InputGroup,
+  InputLeftAddon,
   Spacer,
   Spinner,
   Text,
@@ -30,6 +33,7 @@ import { GameEntryName } from "../../components/GameEntryName";
 import { GameEntry } from "../../components/GameEntry";
 import { GameBoard } from "../../components/GameBoard";
 import { IoEye } from "react-icons/io5";
+import { UrlCopyInput } from "../../components/UrlCopyInput";
 
 const gameRefs = (id: string) => {
   const db = getDatabase();
@@ -76,6 +80,13 @@ const Game: NextPage = () => {
       </Head>
 
       <Heading>[Game {id}] - Shogos test</Heading>
+
+      {isClient && (
+        <InputGroup my="4">
+          <InputLeftAddon>招待URL</InputLeftAddon>
+          <UrlCopyInput />
+        </InputGroup>
+      )}
 
       {isClient && !!user && (
         <Grid templateColumns="1fr 1fr" gap="2">
