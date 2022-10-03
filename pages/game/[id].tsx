@@ -43,7 +43,6 @@ import { GameBoard } from "../../components/GameBoard";
 import { IoEye } from "react-icons/io5";
 import { UrlCopyInput } from "../../components/UrlCopyInput";
 import { Helps } from "../../components/Helps";
-import { HeadMeta } from "../../components/HeadMeta";
 
 const gameRefs = (id: string) => {
   const db = getDatabase();
@@ -86,7 +85,22 @@ const Game: NextPage = () => {
     <Container size="container.lg">
       <Head>
         <title>プレイ - しょ碁ス（ShoGoSs）</title>
-        <HeadMeta />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="将棋＋囲碁＋チェスの異種格闘ゲーム" />
+        <meta property="og:title" content="しょ碁ス（ShoGoSs） online" />
+        <meta
+          property="og:description"
+          content="将棋＋囲碁＋チェスの異種格闘ゲーム"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="ja_JP" />
+        <meta
+          property="og:image"
+          content="https://shogos-app.web.app/ogp.png"
+        />
+        <meta property="og:site_name" content="しょ碁ス（ShoGoSs） online" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@oga_pleconia" />
       </Head>
 
       <HStack my="1">
