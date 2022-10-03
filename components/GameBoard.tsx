@@ -19,7 +19,7 @@ const items: {
     type: "shogi" as const,
     nariLabel: "と",
   })),
-  { name: "king", label: "K", pos: [5, 1], type: "shogi" },
+  { name: "king", label: "K", pos: [5, 1], type: "shogi", nariLabel: "超" },
   { name: "kin1", label: "金", pos: [6, 1], type: "shogi" },
   { name: "kin2", label: "金", pos: [4, 1], type: "shogi" },
   { name: "gin1", label: "銀", pos: [7, 1], type: "shogi", nariLabel: "全" },
