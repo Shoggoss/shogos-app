@@ -96,7 +96,7 @@ const Game: NextPage = () => {
         <Button onClick={on} variant="link">
           ヘルプ
         </Button>
-        <Modal isOpen={showHelp} onClose={off}>
+        <Modal isOpen={showHelp} onClose={off} size="xl">
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>ヘルプ</ModalHeader>
