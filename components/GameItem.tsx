@@ -108,10 +108,14 @@ export const GameItem = ({
               w="100%"
               left="0"
               top="50%"
-              transform={direction ? "translateY(-55%)" : "translateY(-50%)"}
+              transform={
+                direction
+                  ? "translateY(-55%)"
+                  : "translateY(-45%) rotate(180deg)"
+              }
               fontSize="260%"
             >
-              {direction ? "☖" : "⛉"}
+              ☖
             </Text>
           )}
           <Text
