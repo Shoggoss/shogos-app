@@ -9,7 +9,7 @@ export const HeadMeta = () => (
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ja_JP" />
-    <meta property="og:image" content="/ogp.png" />
+    <meta property="og:image" content="https://shogos-app.web.app/ogp.png" />
     <meta property="og:site_name" content="しょ碁ス（ShoGoSs） online" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@oga_pleconia" />
