@@ -106,6 +106,9 @@ const Game: NextPage = () => {
       </HStack>
       <Heading size="lg">プレイ - しょ碁ス（ShoGoSs）</Heading>
       <Text mt="1">ルールを守って自由に戦おう！</Text>
+      <Text fontSize="xs">
+        （複雑なのでdiscordとかしながらやるのをおすすめします）
+      </Text>
 
       {isClient && (
         <InputGroup my="4">
