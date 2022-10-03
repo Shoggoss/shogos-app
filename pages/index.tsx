@@ -10,12 +10,12 @@ const Home: NextPage = () => {
   return (
     <Container>
       <Head>
-        <title>ShoGoSs online</title>
+        <title>しょ碁ス（ShoGoSs） online</title>
         <meta name="description" content="ShoGoSs online" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Heading>ShoGoSs</Heading>
+      <Heading my="1">しょ碁ス（ShoGoSs） online</Heading>
       <Button
         mt="4"
         onClick={() =>

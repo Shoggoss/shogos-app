@@ -84,7 +84,7 @@ const Game: NextPage = () => {
   return (
     <Container size="container.lg">
       <Head>
-        <title>プレイ - ShoGoSs</title>
+        <title>プレイ - しょ碁ス（ShoGoSs）</title>
         <meta name="description" content="Shogos test" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -107,7 +107,8 @@ const Game: NextPage = () => {
           </ModalContent>
         </Modal>
       </HStack>
-      <Heading>プレイ - ShoGoSs</Heading>
+      <Heading size="lg">プレイ - しょ碁ス（ShoGoSs）</Heading>
+      <Text mt="1">ルールを守って自由に戦おう！</Text>
 
       {isClient && (
         <InputGroup my="4">
