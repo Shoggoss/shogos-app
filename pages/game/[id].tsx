@@ -135,7 +135,7 @@ const Game: NextPage = () => {
           mt="4"
           baseRef={refs.base}
           viewSide={viewSide}
-          canModify={canModify}
+          canModify={canModify || true}
         />
       )}
     </Container>
