@@ -11,6 +11,7 @@ export const GameGrid = forwardRef<GridProps, "div">((props, ref) => {
       bg="white"
       border="1px solid black"
       sx={{ aspectRatio: "1/1" }}
+      pointerEvents="none"
       {...props}
     >
       {range(9 * 9).map((i) => (
@@ -18,6 +19,7 @@ export const GameGrid = forwardRef<GridProps, "div">((props, ref) => {
           key={i}
           sx={{ aspectRatio: "1/1" }}
           border="1px solid black"
+          pointerEvents="none"
         />
       ))}
     </Grid>
