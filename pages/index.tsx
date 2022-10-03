@@ -19,7 +19,9 @@ const Home: NextPage = () => {
         mt="4"
         onClick={() =>
           router.push({
-            pathname: `/game/${Math.round(Math.random() * 1000000)}`,
+            pathname: `/game/${Date.now()}-${Math.round(
+              Math.random() * 1000000,
+            )}`,
           })
         }
       >
