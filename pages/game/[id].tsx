@@ -175,7 +175,7 @@ const Game: NextPage = () => {
       )}
       {isClient && (
         <GameBoard
-          mt="4"
+          mt="10"
           baseRef={refs.base}
           viewSide={viewSide}
           canModify={canModify}

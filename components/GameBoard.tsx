@@ -38,7 +38,7 @@ const items: {
   ...range(81).map((i) => ({
     name: `go${i + 1}`,
     label: "",
-    pos: [11, -1] as const,
+    pos: [9, -0.5] as const,
     type: "go" as const,
   })),
 ];
