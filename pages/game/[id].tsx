@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Center,
   Container,
   Flex,
   Grid,
@@ -42,7 +43,7 @@ const gameRefs = (id: string) => {
     base: baseRef,
     white: child(baseRef, "white"),
     black: child(baseRef, "black"),
-    state: child(baseRef, "state"),
+    items: child(baseRef, "items"),
     owns: {
       white: child(baseRef, `owns/white`),
       black: child(baseRef, `owns/black`),
@@ -79,7 +80,10 @@ const Game: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Heading>[Game {id}] - Shogos test</Heading>
+      <Button my="1" onClick={() => router.push("/")} variant="link">
+        戻る
+      </Button>
+      <Heading>Game {id}</Heading>
 
       {isClient && (
         <InputGroup my="4">
@@ -138,6 +142,18 @@ const Game: NextPage = () => {
           canModify={canModify}
         />
       )}
+      <Center>
+        <Button
+          mt="32"
+          onClick={() =>
+            confirm("本当にリセットしますか？") &&
+            confirm("本当に？？？") &&
+            remove(refs.items)
+          }
+        >
+          リセット
+        </Button>
+      </Center>
     </Container>
   );
 };
