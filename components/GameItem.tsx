@@ -121,7 +121,7 @@ export const GameItem = ({
         </ModalContent>
       </Modal>
       <Draggable position={viewPosition} onDrag={onDrag}>
-        <Box position="absolute" w="10%">
+        <Box position="absolute" w="10%" userSelect="none">
           <Box
             borderRadius="full"
             border="1px solid black"
