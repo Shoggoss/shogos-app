@@ -12,9 +12,16 @@ import {
   Input,
   InputGroup,
   InputLeftAddon,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
   Spacer,
   Spinner,
   Text,
+  useBoolean,
   VStack,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
@@ -35,6 +42,7 @@ import { GameEntry } from "../../components/GameEntry";
 import { GameBoard } from "../../components/GameBoard";
 import { IoEye } from "react-icons/io5";
 import { UrlCopyInput } from "../../components/UrlCopyInput";
+import { Helps } from "../../components/Helps";
 
 const gameRefs = (id: string) => {
   const db = getDatabase();
@@ -58,7 +66,6 @@ type UserInfo = {
 
 const Game: NextPage = () => {
   const router = useRouter();
-  const { id } = router.query as { id: string };
   const isClient = useClient();
 
   const [user, userLoading, userError] = useAuthState(getAuth());
@@ -72,6 +79,7 @@ const Game: NextPage = () => {
     !!user && (user.uid === white?.uid || user.uid === black?.uid);
 
   const [viewSide, setViewSide] = useState<"white" | "black">("black");
+  const [showHelp, { on, off }] = useBoolean(false);
 
   return (
     <Container size="container.lg">
@@ -81,9 +89,24 @@ const Game: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Button my="1" onClick={() => router.push("/")} variant="link">
-        戻る
-      </Button>
+      <HStack my="1">
+        <Button onClick={() => router.push("/")} variant="link">
+          戻る
+        </Button>
+        <Button onClick={on} variant="link">
+          ヘルプ
+        </Button>
+        <Modal isOpen={showHelp} onClose={off}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>ヘルプ</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Helps />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </HStack>
       <Heading>プレイ - ShoGoSs</Heading>
 
       {isClient && (

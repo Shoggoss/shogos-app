@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { Helps } from "../components/Helps";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -27,6 +28,8 @@ const Home: NextPage = () => {
       >
         新しいゲーム
       </Button>
+
+      <Helps mt="4" />
     </Container>
   );
 };
