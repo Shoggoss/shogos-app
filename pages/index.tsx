@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { HeadMeta } from "../components/HeadMeta";
 import { Helps } from "../components/Helps";
 
 const Home: NextPage = () => {
@@ -11,8 +12,7 @@ const Home: NextPage = () => {
     <Container>
       <Head>
         <title>しょ碁ス（ShoGoSs） online</title>
-        <meta name="description" content="ShoGoSs online" />
-        <link rel="icon" href="/favicon.ico" />
+        <HeadMeta />
       </Head>
 
       <Heading my="1">しょ碁ス（ShoGoSs） online</Heading>

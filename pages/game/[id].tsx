@@ -43,6 +43,7 @@ import { GameBoard } from "../../components/GameBoard";
 import { IoEye } from "react-icons/io5";
 import { UrlCopyInput } from "../../components/UrlCopyInput";
 import { Helps } from "../../components/Helps";
+import { HeadMeta } from "../../components/HeadMeta";
 
 const gameRefs = (id: string) => {
   const db = getDatabase();
@@ -85,8 +86,7 @@ const Game: NextPage = () => {
     <Container size="container.lg">
       <Head>
         <title>プレイ - しょ碁ス（ShoGoSs）</title>
-        <meta name="description" content="Shogos test" />
-        <link rel="icon" href="/favicon.ico" />
+        <HeadMeta />
       </Head>
 
       <HStack my="1">
