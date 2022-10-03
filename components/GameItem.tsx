@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useLongPress } from "use-long-press";
 
+const canTouch = typeof window !== "undefined" && "ontouchstart" in window;
 export const GameItem = ({
   baseRef,
   scale,
@@ -101,7 +102,7 @@ export const GameItem = ({
     onToggleNari();
     off();
   }, [onToggleNari, off]);
-  const bind = useLongPress(on);
+  const bind = useLongPress(on, { cancelOnMovement: true, threshold: 1200 });
 
   if (positionLoading || ownerLoading || nariLoading) return null;
 
@@ -136,7 +137,7 @@ export const GameItem = ({
             fontSize={["xs", "md"]}
             onContextMenu={onToggleOwner}
             onDoubleClick={onToggleNari}
-            {...bind()}
+            {...(canTouch ? { ...bind() } : {})}
           >
             {type === "shogi" && (
               <Text
