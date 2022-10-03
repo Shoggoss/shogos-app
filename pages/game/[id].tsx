@@ -68,7 +68,8 @@ const Game: NextPage = () => {
   );
   const [white, whiteLoading, whiteError] = useObjectVal<UserInfo>(refs.white);
   const [black, blackLoading, blackError] = useObjectVal<UserInfo>(refs.black);
-  const canModify = user?.uid === white?.uid || user?.uid === black?.uid;
+  const canModify =
+    !!user && (user.uid === white?.uid || user.uid === black?.uid);
 
   const [viewSide, setViewSide] = useState<"white" | "black">("black");
 
