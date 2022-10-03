@@ -142,18 +142,20 @@ const Game: NextPage = () => {
           canModify={canModify}
         />
       )}
-      <Center>
-        <Button
-          mt="32"
-          onClick={() =>
-            confirm("本当にリセットしますか？") &&
-            confirm("本当に？？？") &&
-            remove(refs.items)
-          }
-        >
-          リセット
-        </Button>
-      </Center>
+      {canModify && (
+        <Center>
+          <Button
+            mt="32"
+            onClick={() =>
+              confirm("本当にリセットしますか？") &&
+              confirm("本当に？？？") &&
+              remove(refs.items)
+            }
+          >
+            リセット
+          </Button>
+        </Center>
+      )}
     </Container>
   );
 };
