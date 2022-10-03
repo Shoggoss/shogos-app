@@ -170,8 +170,10 @@ const Game: NextPage = () => {
       {canModify && (
         <>
           <Center mt="32">
-            <Text fontSize="sm">
+            <Text fontSize="sm" textAlign="center">
               ダブルクリックで成り・右クリックで所有者変更
+              <br />
+              または長押しで操作選択
             </Text>
           </Center>
           <Center>

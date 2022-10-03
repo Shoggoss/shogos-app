@@ -2,7 +2,19 @@ import { DatabaseReference, child, set } from "firebase/database";
 import { useObjectVal } from "react-firebase-hooks/database";
 import { useCallback, useMemo } from "react";
 import Draggable, { DraggableEventHandler } from "react-draggable";
-import { Box, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+  Text,
+  useBoolean,
+  VStack,
+} from "@chakra-ui/react";
+import { useLongPress } from "use-long-press";
 
 export const GameItem = ({
   baseRef,
@@ -65,72 +77,98 @@ export const GameItem = ({
     },
     [refs.position, scale, viewSide],
   );
-  const onToggleOwner: React.MouseEventHandler<HTMLDivElement> = useCallback(
-    (e) => {
-      e.preventDefault();
+  const onToggleOwner = useCallback(
+    (e?: { preventDefault(): unknown }) => {
+      e?.preventDefault();
       set(refs.owner, !owner);
     },
     [refs.owner, owner],
   );
-  const onToggleNari: React.MouseEventHandler<HTMLDivElement> = useCallback(
-    (e) => {
-      e.preventDefault();
+  const onToggleNari = useCallback(
+    (e?: { preventDefault(): unknown }) => {
+      e?.preventDefault();
       set(refs.nari, !nari);
     },
     [refs.nari, nari],
   );
 
+  const [open, { on, off }] = useBoolean(false);
+  const onToggleOwnerButton = useCallback(() => {
+    onToggleOwner();
+    off();
+  }, [onToggleOwner, off]);
+  const onToggleNariButton = useCallback(() => {
+    onToggleNari();
+    off();
+  }, [onToggleNari, off]);
+  const bind = useLongPress(on);
+
   if (positionLoading || ownerLoading || nariLoading) return null;
 
   return (
-    <Draggable position={viewPosition} onDrag={onDrag}>
-      <Box position="absolute" w="10%">
-        <Box
-          borderRadius="full"
-          border="1px solid black"
-          bg={actualSide}
-          color={actualSide === "white" ? "black" : "white"}
-          sx={{ aspectRatio: "1/1" }}
-          textAlign="center"
-          cursor={canModify ? "grab" : "default"}
-          pointerEvents={canModify ? undefined : "none"}
-          transform="translate(-50%, -50%)"
-          position="absolute"
-          width="100%"
-          fontSize={["xs", "md"]}
-          onContextMenu={onToggleOwner}
-          onDoubleClick={onToggleNari}
-        >
-          {type === "shogi" && (
+    <>
+      <Modal isOpen={open} onClose={off} size="xs">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalBody>
+            <VStack>
+              <Button onClick={onToggleOwnerButton}>持ち主を変更</Button>
+              <Button onClick={onToggleNariButton}>成る</Button>
+            </VStack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+      <Draggable position={viewPosition} onDrag={onDrag}>
+        <Box position="absolute" w="10%">
+          <Box
+            borderRadius="full"
+            border="1px solid black"
+            bg={actualSide}
+            color={actualSide === "white" ? "black" : "white"}
+            sx={{ aspectRatio: "1/1" }}
+            textAlign="center"
+            cursor={canModify ? "grab" : "default"}
+            pointerEvents={canModify ? undefined : "none"}
+            transform="translate(-50%, -50%)"
+            position="absolute"
+            width="100%"
+            fontSize={["xs", "md"]}
+            onContextMenu={onToggleOwner}
+            onDoubleClick={onToggleNari}
+            {...bind()}
+          >
+            {type === "shogi" && (
+              <Text
+                as="span"
+                position="absolute"
+                w="100%"
+                left="0"
+                top="50%"
+                transform={
+                  direction
+                    ? "translateY(-55%)"
+                    : "translateY(-45%) rotate(180deg)"
+                }
+                fontSize="260%"
+              >
+                ☖
+              </Text>
+            )}
             <Text
               as="span"
               position="absolute"
               w="100%"
               left="0"
               top="50%"
-              transform={
-                direction
-                  ? "translateY(-55%)"
-                  : "translateY(-45%) rotate(180deg)"
-              }
-              fontSize="260%"
+              transform="translateY(-50%)"
+              fontSize={type === "chess" ? "240%" : "100%"}
             >
-              ☖
+              {nari && nariLabel ? nariLabel : label}
             </Text>
-          )}
-          <Text
-            as="span"
-            position="absolute"
-            w="100%"
-            left="0"
-            top="50%"
-            transform="translateY(-50%)"
-            fontSize={type === "chess" ? "240%" : "100%"}
-          >
-            {nari && nariLabel ? nariLabel : label}
-          </Text>
+          </Box>
         </Box>
-      </Box>
-    </Draggable>
+      </Draggable>
+    </>
   );
 };
