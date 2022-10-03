@@ -76,7 +76,7 @@ const Game: NextPage = () => {
   return (
     <Container size="container.lg">
       <Head>
-        <title>[Game {id}] - Shogos test</title>
+        <title>対戦 - Shogos</title>
         <meta name="description" content="Shogos test" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -84,7 +84,7 @@ const Game: NextPage = () => {
       <Button my="1" onClick={() => router.push("/")} variant="link">
         戻る
       </Button>
-      <Heading>Game {id}</Heading>
+      <Heading>プレイ - Shogos</Heading>
 
       {isClient && (
         <InputGroup my="4">
