@@ -55,6 +55,7 @@ export const GameItem = ({
   });
   const direction = viewSide === "white" ? !owner : owner;
   const [nari, nariLoading] = useObjectVal<boolean>(refs.nari);
+  const actualSide = type === "shogi" ? (owner ? "black" : "white") : side;
 
   const onDrag: DraggableEventHandler = useCallback(
     (_e, { x, y }) => {
@@ -87,8 +88,8 @@ export const GameItem = ({
         <Box
           borderRadius="full"
           border="1px solid black"
-          bg={side}
-          color={side === "white" ? "black" : "white"}
+          bg={actualSide}
+          color={actualSide === "white" ? "black" : "white"}
           sx={{ aspectRatio: "1/1" }}
           textAlign="center"
           cursor={canModify ? "grab" : "default"}
