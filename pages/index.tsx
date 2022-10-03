@@ -9,12 +9,12 @@ const Home: NextPage = () => {
   return (
     <Container>
       <Head>
-        <title>Shogos test</title>
-        <meta name="description" content="Shogos test" />
+        <title>ShoGoSs online</title>
+        <meta name="description" content="ShoGoSs online" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Heading>Shogos</Heading>
+      <Heading>ShoGoSs</Heading>
       <Button
         mt="4"
         onClick={() =>
